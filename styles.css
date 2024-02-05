@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Play&family=Protest+Guerrilla&display=swap");
+
+:root {
+  --clr-dark: #202020;
+  --clr-red: rgb(161, 0, 51);
+  --clr-green: rgb(0, 93, 48);
+}
+
+* {
+  font-family: "Play", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  padding-top: 40px;
+  background-color: #efefef;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  font-family: "Protest Guerrilla", sans-serif;
+  color: var(--clr-dark);
+  margin-bottom: 2rem;
+}
+
+.score-container {
+  display: flex;
+  width: 500px;
+  margin: 10px auto;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #efefef;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid rgb(195, 195, 195);
+  border-radius: 10px;
+}
+
+.score-user,
+.score-computer {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.score-user > img,
+.score-computer > img {
+  width: 80px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.score-user > p,
+.score-computer > p {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.dash {
+  width: 20px;
+  height: 10px;
+  background-color: var(--clr-dark);
+}
+
+#user-streak,
+#computer-streak {
+  font-family: "Protest Guerrilla", sans-serif;
+  font-size: 4rem;
+  color: var(--clr-dark);
+}
+
+#user-streak {
+  margin-left: 1.4rem;
+}
+#computer-streak {
+  margin-right: 1.4rem;
+}
+
+.container {
+  width: 800px;
+  height: 400px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.choice-container {
+  display: flex;
+  width: 100%;
+  gap: 4rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.choice {
+  width: 150px;
+  cursor: pointer;
+  transition: opacity 200ms, scale 200ms;
+  opacity: 0.8;
+}
+
+.choice:hover {
+  opacity: 1;
+  scale: 1.1;
+}
+
+#result {
+  font-weight: 300;
+  font-size: 1.2rem;
+}

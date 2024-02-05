@@ -1,5 +1,13 @@
-const playerChoice = document.querySelector("#player-choice");
+// const playerChoice = document.querySelector("#player-choice");
+const playerChoice = document.querySelector(".choice-container");
 const resultEl = document.querySelector("#result");
+const playerScore = document.querySelector("#user-streak");
+const computerScore = document.querySelector("#computer-streak");
+
+const LEGAL_MOVES = ["rock", "paper", "scissor"];
+
+let playerStreak = 0;
+let computerStreak = 0;
 
 function getComputerChoice() {
   const randNum = Math.floor(Math.random() * 3) + 1;
@@ -34,6 +42,12 @@ function playRound(playerChoice, computerChoice) {
 
   result = result || (playerWin1 || playerWin2 || playerWin2 ? "win" : "lose");
 
+  if (result === "win") {
+    playerStreak += 1;
+  } else if (result === "lose") {
+    computerStreak += 1;
+  }
+
   finalResult = `You picked ${capitalize(
     playerChoice
   )}, computer picked ${capitalize(computerChoice)}. `;
@@ -47,7 +61,20 @@ function playRound(playerChoice, computerChoice) {
   return finalResult;
 }
 
-playerChoice.addEventListener("change", () => {
-  let result = playRound(playerChoice.value, getComputerChoice());
+function renderColor() {
+  const style = getComputedStyle(document.body);
+  const green = style.getPropertyValue("--clr-green");
+  const red = style.getPropertyValue("--clr-red");
+
+  playerScore.style.color = playerStreak >= computerStreak ? green : red;
+  computerScore.style.color = computerStreak >= playerStreak ? green : red;
+}
+
+playerChoice.addEventListener("click", (event) => {
+  if (!LEGAL_MOVES.includes(event.target.id)) return;
+  let result = playRound(event.target.id, getComputerChoice());
   resultEl.textContent = result;
+  playerScore.textContent = playerStreak;
+  computerScore.textContent = computerStreak;
+  renderColor();
 });
